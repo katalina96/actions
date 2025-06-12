@@ -29,12 +29,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist-files
-          path: |                           #where to find the files that should be stored
-            dist
-            package.json
+          path: dist                          #where to find the files that should be stored
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files                             #Name of the artifact to download
+      - name: Output Contents
+        run: ls 
       - name: Deploy
         run: echo "Deploying..."
