@@ -3,8 +3,7 @@ name: Deployment
 on:
   push:
     branches:
-      - main
-      - dev
+      - env-variables-and-secrets
 
 env:
   MONGODB_DB_NAME: gha-demo
